@@ -7,7 +7,7 @@ package Nsmf_PDUSession
 import (
 	"net/http"
 
-	"github.com/free5gc/openapi/models"
+	"github.com/omec-project/openapi/models"
 )
 
 var (

@@ -16,8 +16,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/free5gc/openapi"
-	. "github.com/free5gc/openapi/models"
+	"github.com/omec-project/openapi"
+	. "github.com/omec-project/openapi/models"
 )
 
 // Linger please

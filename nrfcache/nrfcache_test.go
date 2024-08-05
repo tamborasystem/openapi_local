@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2022 Open Networking Foundation <info@opennetworking.org>
 // SPDX-FileCopyrightText: 2024 Canonical Ltd.
 /*
  *  Tests for NRF Caching library

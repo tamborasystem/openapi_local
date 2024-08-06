@@ -147,7 +147,7 @@ func (c *NrfCache) handleLookup(nrfUri string, targetNfType, requestNfType model
 	c.mutex.RUnlock()
 
 	if len(searchResult.NfInstances) == 0 {
-		fmt.Printf("Cache miss for nftype %s", targetNfType)
+		fmt.Printf("cache miss for nftype %s", targetNfType)
 		c.mutex.Lock()
 		defer c.mutex.Unlock()
 		searchResult.NfInstances = c.get(param)
@@ -297,7 +297,7 @@ func (c *NrfMasterCache) GetNrfCacheInstance(targetNfType models.NfType) *NrfCac
 
 	cache, exists := c.nfTypeToCacheMap[targetNfType]
 	if exists == false {
-		fmt.Printf("Creating cache for nftype %v", targetNfType)
+		fmt.Printf("creating cache for nftype %v", targetNfType)
 		cache = NewNrfCache(c.evictionInterval, c.nrfDiscoveryQueryCb)
 		c.nfTypeToCacheMap[targetNfType] = cache
 	}
@@ -346,7 +346,6 @@ func disableNrfCaching() {
 }
 
 func SearchNFInstances(nrfUri string, targetNfType, requestNfType models.NfType, param *Nnrf_NFDiscovery.SearchNFInstancesParamOpts) (models.SearchResult, error) {
-
 	var searchResult models.SearchResult
 	var err error
 
@@ -354,7 +353,7 @@ func SearchNFInstances(nrfUri string, targetNfType, requestNfType models.NfType,
 	if c != nil {
 		searchResult, err = c.handleLookup(nrfUri, targetNfType, requestNfType, param)
 	} else {
-		fmt.Println("SearchNFInstances nrf cache")
+		fmt.Println("failed to find cache for nf type")
 
 	}
 	for _, np := range searchResult.NfInstances {

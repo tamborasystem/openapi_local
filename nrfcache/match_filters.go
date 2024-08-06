@@ -61,6 +61,7 @@ func MatchSmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			var snssai models.Snssai
 			err := json.Unmarshal([]byte(reqSnssai), &snssai)
 			if err != nil {
+				fmt.Printf("error Unmarshaling nssai : %+v", err)
 				return false, err
 			}
 
@@ -112,7 +113,7 @@ func MatchSmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			return false, nil
 		}
 	}
-	fmt.Printf("SMF match found, nfInstance Id %v", profile.NfInstanceId)
+	fmt.Printf("smf match found, nfInstance Id %v", profile.NfInstanceId)
 	return true, nil
 }
 
@@ -142,12 +143,12 @@ func MatchAusfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNF
 			matchFound = MatchSupiRange(opts.Supi.Value(), profile.AusfInfo.SupiRanges)
 		}
 	}
-	fmt.Printf("Ausf match found = %v", matchFound)
+	fmt.Printf("ausf match found = %v", matchFound)
 	return matchFound, nil
 }
 
 func MatchNssfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFInstancesParamOpts) (bool, error) {
-	fmt.Println("Nssf match found ")
+	fmt.Println("nssf match found ")
 	return true, nil
 }
 
@@ -163,7 +164,7 @@ func MatchAmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 				err := json.Unmarshal([]byte(targetPlmn), &plmn)
 
 				if err != nil {
-					fmt.Printf("Error Unmarshaling plmn : %+v", err)
+					fmt.Printf("error Unmarshaling plmn : %+v", err)
 					return false, err
 				}
 
@@ -191,7 +192,7 @@ func MatchAmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 					err := json.Unmarshal([]byte(guami), &guamiOpt)
 
 					if err != nil {
-						fmt.Printf("Error Unmarshaling guami : %+v", err)
+						fmt.Printf("error Unmarshaling guami : %+v", err)
 						return false, err
 					}
 
@@ -232,7 +233,7 @@ func MatchAmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			}
 		}
 	}
-	fmt.Printf("Amf match found = %v", profile.NfInstanceId)
+	fmt.Printf("amf match found = %v", profile.NfInstanceId)
 	return true, nil
 }
 
@@ -243,7 +244,7 @@ func MatchPcfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			matchFound = MatchSupiRange(opts.Supi.Value(), profile.PcfInfo.SupiRanges)
 		}
 	}
-	fmt.Printf("PCF match found = %v", matchFound)
+	fmt.Printf("pcf match found = %v", matchFound)
 	return matchFound, nil
 }
 
@@ -254,6 +255,6 @@ func MatchUdmProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			matchFound = MatchSupiRange(opts.Supi.Value(), profile.UdmInfo.SupiRanges)
 		}
 	}
-	fmt.Printf("UDM match found = %v", matchFound)
+	fmt.Printf("udm match found = %v", matchFound)
 	return matchFound, nil
 }

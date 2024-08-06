@@ -443,7 +443,7 @@ func MarshToJsonString(v interface{}) (result []string) {
 		for i := 0; i < val.Len(); i++ {
 			tmp, err := json.Marshal(val.Index(i).Interface())
 			if err != nil {
-				fmt.Printf("Marshal error: %+v", err)
+				fmt.Printf("marshal error: %+v", err)
 			}
 
 			result = append(result, string(tmp))
@@ -451,7 +451,7 @@ func MarshToJsonString(v interface{}) (result []string) {
 	} else {
 		tmp, err := json.Marshal(v)
 		if err != nil {
-			fmt.Printf("Marshal error: %+v", err)
+			fmt.Printf("marshal error: %+v", err)
 		}
 
 		result = append(result, string(tmp))
@@ -572,7 +572,7 @@ func TestCacheMissAndHits(t *testing.T) {
 		t.Error("nrf search did not return any records")
 	}
 	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("Unexpected nrfDbCallbackCallCount")
+		t.Error("unexpected nrfDbCallbackCallCount")
 	}
 
 	// Cache hit scenario
@@ -584,7 +584,7 @@ func TestCacheMissAndHits(t *testing.T) {
 		t.Error("nrf search did not return any records")
 	}
 	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("Unexpected nrfDbCallbackCallCount")
+		t.Error("unexpected nrfDbCallbackCallCount")
 	}
 
 	// Cache Miss for dnn 'ims'
@@ -604,7 +604,7 @@ func TestCacheMissAndHits(t *testing.T) {
 		t.Error("nrf search did not return any records")
 	}
 	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("Unexpected nrfDbCallbackCallCount")
+		t.Error("unexpected nrfDbCallbackCallCount")
 	}
 
 	// Cache Miss for dnn 'internet' sd '0a0b0c'
@@ -624,7 +624,7 @@ func TestCacheMissAndHits(t *testing.T) {
 		t.Error("nrf search did not return any records")
 	}
 	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("Unexpected nrfDbCallbackCallCount")
+		t.Error("unexpected nrfDbCallbackCallCount")
 	}
 
 	disableNrfCaching()
@@ -823,7 +823,7 @@ func TestAusfMatchFilters(t *testing.T) {
 		t.Error("nrf search did not return any records")
 	}
 	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("Unexpected nrfDbCallbackCallCount")
+		t.Error("unexpected nrfDbCallbackCallCount")
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
@@ -835,7 +835,7 @@ func TestAusfMatchFilters(t *testing.T) {
 		t.Error("nrf search did not return any records")
 	}
 	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("Unexpected nrfDbCallbackCallCount")
+		t.Error("unexpected nrfDbCallbackCallCount")
 	}
 
 	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
@@ -851,7 +851,7 @@ func TestAusfMatchFilters(t *testing.T) {
 		t.Error("nrf search did not return any records")
 	}
 	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("Unexpected nrfDbCallbackCallCount")
+		t.Error("unexpected nrfDbCallbackCallCount")
 	}
 	disableNrfCaching()
 }
@@ -877,7 +877,7 @@ func TestAmfMatchFilters(t *testing.T) {
 		t.Error("nrf search did not return any records")
 	}
 	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("Unexpected nrfDbCallbackCallCount")
+		t.Error("unexpected nrfDbCallbackCallCount")
 	}
 
 	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
@@ -895,7 +895,7 @@ func TestAmfMatchFilters(t *testing.T) {
 		t.Error("nrf search did not return any records")
 	}
 	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("Unexpected nrfDbCallbackCallCount")
+		t.Error("unexpected nrfDbCallbackCallCount")
 	}
 
 	disableNrfCaching()
